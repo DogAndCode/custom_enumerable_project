@@ -1,11 +1,23 @@
 module Enumerable
-  # Your code goes here
+  def my_each_with_index
+    idx = 0
+    for el in self do
+      yield el, idx
+      idx += 1
+    end
+    self
+  end
+
+  def my_select
+    arr = []
+    for el in self do
+      yield el
+      arr << el if el
+    end
+    arr
+  end
 end
 
-# You will first have to define my_each
-# on the Array class. Methods defined in
-# your enumerable module will have access
-# to this method
 class Array
   def my_each
     for el in self do #esto se lo pasas a arr
@@ -14,6 +26,3 @@ class Array
   end
   self #se retorna a si mismo igual que el each, devuelve la misma
 end
-
-#FUNCIONA SOLO CON ESTO, EL TIPEJO LO QUE HACE ES TIRARSE EL ROLLO PARA QUE
-#DEVUELVA EL ENUMERATOR EN CASO DE QUE NO TENGA BLOQUE
