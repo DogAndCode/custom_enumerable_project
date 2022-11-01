@@ -1,10 +1,17 @@
-array = [2, 3, 4, 5]
 
-module Enumerable
+
+module Test
   def my_inject
-    
+    arr = []
+    for el in self do
+      arr << (yield el)
+    end
+    arr.sum
   end
 end
 
+include Test
 
-p array.my_map{|x| x * 2}
+arr = [2, 3, 4, 5]
+
+p arr.my_inject{|acc, n| acc + n}
