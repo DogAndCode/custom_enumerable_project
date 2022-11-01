@@ -3,10 +3,11 @@
 module Test
   def my_inject
     arr = []
+    inic = 1
     for el in self do
-      arr << (yield el)
+      arr << (yield inic, el)
     end
-    arr.sum
+    arr
   end
 end
 
@@ -14,4 +15,4 @@ include Test
 
 arr = [2, 3, 4, 5]
 
-p arr.my_inject{|acc, n| acc + n}
+p arr.my_inject{|acc, n| acc * n}

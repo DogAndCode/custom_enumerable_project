@@ -58,13 +58,21 @@ module Enumerable
     end
     arr
   end
+
+  def my_inject(initial)
+    arr = [initial]
+    for el in self do
+      arr << (yield arr.last, el)
+    end
+    arr.last
+  end
 end
 
 class Array
   def my_each
-    for el in self do #esto se lo pasas a arr
-      yield el #yield aqui actua el bloque REPASAR
+    for el in self do
+      yield el
     end
   end
-  self #se retorna a si mismo igual que el each, devuelve la misma
+  self
 end
